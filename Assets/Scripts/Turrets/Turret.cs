@@ -34,8 +34,8 @@ public class Turret : MonoBehaviour
     /// </summary>
     void LookForPlayer()
     {
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position,player.transform.position, out hit, 50f))
+        /*gun.shape
+        if(false)
         {
             if (hit.collider.CompareTag("Player"))
             {
@@ -52,6 +52,7 @@ public class Turret : MonoBehaviour
             }
         }
     }
+        */
     /// <summary>
     /// Routine for turret fire.
     /// </summary>
@@ -59,11 +60,6 @@ public class Turret : MonoBehaviour
     {
         anim.SetTrigger("Hostile");
         yield return new WaitWhile(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f);
-        while (seesPlayer)
-        {
-            yield return new WaitForSeconds(1 / fireSpeed);
-            //subtract player health
-            Debug.Log("hit!");
-        }
+        gun.Play();
     }
 }
