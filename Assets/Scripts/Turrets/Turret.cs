@@ -50,9 +50,9 @@ public class Turret : MonoBehaviour
             {
                 seesPlayer = false;
             }
-        }
+        }*/
     }
-        */
+
     /// <summary>
     /// Routine for turret fire.
     /// </summary>
