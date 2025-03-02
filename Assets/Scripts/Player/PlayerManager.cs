@@ -16,14 +16,15 @@ public class PlayerManager : MonoBehaviour
   //  [SerializeField] private Transform orientation;
 
     PlayerInput playerInput;
-    InputAction inputAction;
+    InputAction moveAction;
+    InputAction jumpAction;
 
 
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
-        inputAction = playerInput.actions.FindAction("Movement");
-
+        moveAction = playerInput.actions.FindAction("Movement");
+        jumpAction = playerInput.actions.FindAction("Jump");
     }
 
     private void FixedUpdate()
@@ -32,7 +33,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void Move(/*InputAction.CallbackContext context*/)
     {
-        Vector2 direction = inputAction.ReadValue<Vector2>();
+        Vector2 direction = moveAction.ReadValue<Vector2>();
         transform.position += new Vector3(direction.x, 0, direction.y) * Time.deltaTime;
         
         //inputDir = context.ReadValue<Vector2>();
