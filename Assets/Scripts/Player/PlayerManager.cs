@@ -10,10 +10,33 @@ public class PlayerManager : MonoBehaviour
 {
     private Vector2 inputDir = Vector2.zero;    //use alongside camera orientation to move player
 
-    public void Move(InputAction.CallbackContext context)
+
+    //movement
+//    [SerializeField] private float moveSpeed;
+  //  [SerializeField] private Transform orientation;
+
+    PlayerInput playerInput;
+    InputAction inputAction;
+
+
+    private void Start()
     {
-        inputDir = context.ReadValue<Vector2>();
-        Debug.Log(inputDir);
+        playerInput = GetComponent<PlayerInput>();
+        inputAction = playerInput.actions.FindAction("Movement");
+
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
+    }
+    public void Move(/*InputAction.CallbackContext context*/)
+    {
+        Vector2 direction = inputAction.ReadValue<Vector2>();
+        transform.position += new Vector3(direction.x, 0, direction.y) * Time.deltaTime;
+        
+        //inputDir = context.ReadValue<Vector2>();
+       // Debug.Log(inputDir);
     }
 
     public void Jump(InputAction.CallbackContext context)
