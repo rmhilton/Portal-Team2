@@ -8,7 +8,7 @@ public class Turret : MonoBehaviour
     [SerializeField] float damage;
     #endregion
 
-    ParticleSystem gun;
+    [SerializeField] ParticleSystem gun;
 
     GameObject player;
 
@@ -20,46 +20,34 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        anim = GetComponent<Animator>();
     }
     private void Update()
     {
         if (isActive)
         {
-            LookForPlayer();
+            seesPlayer = LookForPlayer();
         }
     }
     /// <summary>
     /// Handles the Turret detecting the player
     /// </summary>
-    void LookForPlayer()
+    bool LookForPlayer()
     {
-        /*gun.shape
-        if(false)
+        if(Vector3.Distance(player.transform.position, transform.position)<gun.shape.length && Vector3.Angle(player.transform.position-transform.position, transform.forward) <= gun.shape.angle)
         {
-            if (hit.collider.CompareTag("Player"))
+            RaycastHit hit;
+            if(Physics.Raycast(gun.shape.position, player.transform.position, out hit))
             {
-                if (!seesPlayer)
+                if (hit.collider.CompareTag("Player"))
                 {
-                    seesPlayer = true;
-                    StartCoroutine(FireGun());
+                        anim.SetBool("Hostile", true);
+                        return true;
                 }
-                
             }
-            else
-            {
-                seesPlayer = false;
-            }
-        }*/
-    }
-
-    /// <summary>
-    /// Routine for turret fire.
-    /// </summary>
-    IEnumerator FireGun()
-    {
-        anim.SetTrigger("Hostile");
-        yield return new WaitWhile(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f);
-        gun.Play();
+        }
+        anim.SetBool("Hostile", false);
+        return false;
     }
 }
