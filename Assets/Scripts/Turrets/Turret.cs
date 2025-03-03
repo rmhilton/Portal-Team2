@@ -3,10 +3,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    #region Firing Settings
-    [SerializeField] float fireSpeed;
-    [SerializeField] float damage;
-    #endregion
+    //fire settings are in particle system
 
     [SerializeField] ParticleSystem gun;
 
@@ -27,6 +24,7 @@ public class Turret : MonoBehaviour
     {
         if (isActive)
         {
+            isActive = CheckFallOver();
             seesPlayer = LookForPlayer();
         }
     }
@@ -49,5 +47,15 @@ public class Turret : MonoBehaviour
         }
         anim.SetBool("Hostile", false);
         return false;
+    }
+
+    bool CheckFallOver()
+    {
+        if(Mathf.Abs(transform.localRotation.eulerAngles.x) > 20 || Mathf.Abs(transform.localRotation.eulerAngles.z) > 20)
+        {
+            anim.SetTrigger("fall");
+            return false;
+        }
+        return true;
     }
 }
