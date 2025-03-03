@@ -19,6 +19,7 @@ public class Turret : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
+        gun.trigger.AddCollider(player.transform);
     }
     private void Update()
     {
