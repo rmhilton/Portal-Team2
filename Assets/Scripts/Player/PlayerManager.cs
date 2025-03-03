@@ -30,6 +30,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     bool grounded = false;
 
+    //interactions
+    [SerializeField] private InteractController interactController;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -126,6 +129,14 @@ public class PlayerManager : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             Debug.Log("Interact button pressed!");
+            if(interactController)
+            {
+                interactController.AttemptInteract();
+            }
+            else
+            {
+                Debug.Log("No Interact Controller set in Player script");
+            }
         }
     }
 }
