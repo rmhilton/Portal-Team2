@@ -109,7 +109,7 @@ MonoBehaviour:
   playerHeight: 2
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   interactController: {fileID: 0}
 --- !u!114 &2733852632570179376
 MonoBehaviour:

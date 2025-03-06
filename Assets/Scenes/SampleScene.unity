@@ -489,6 +489,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1047160602244822086, guid: e91360f9d634607488c7246cd8418a79, type: 3}
+      propertyPath: pickupRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047160602244822086, guid: e91360f9d634607488c7246cd8418a79, type: 3}
+      propertyPath: maxDistToGoal
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6476957371471249361, guid: e91360f9d634607488c7246cd8418a79, type: 3}
       propertyPath: cameraPos
       value: 
