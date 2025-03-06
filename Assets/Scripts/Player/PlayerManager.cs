@@ -100,7 +100,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(context.phase == InputActionPhase.Performed)
         {
-            Debug.Log("Jump button pressed!");
+            //Debug.Log("Jump button pressed!");
             if(readyToJump && grounded)
             {
                 readyToJump = false;
@@ -128,7 +128,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            Debug.Log("Interact button pressed!");
+            //Debug.Log("Interact button pressed!");
             if(interactController)
             {
                 interactController.AttemptInteract();

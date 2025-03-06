@@ -1,5 +1,7 @@
 using UnityEngine;
 
+/* Class Created By Raymend */
+
 public class GrabbableObject : InteractableObject
 {
     private bool grabbed = false;
@@ -36,7 +38,7 @@ public class GrabbableObject : InteractableObject
             if(holdGoal)
             {
                 goalPos = holdGoal;
-                //transform.parent = goalPos;
+                transform.parent = goalPos;
             }
         }
         else
@@ -47,7 +49,7 @@ public class GrabbableObject : InteractableObject
             rb.linearDamping = 0f;
             rb.freezeRotation = false;
             goalPos = null;
-            //transform.parent = null;
+            transform.parent = null;
             Vector3 dropDir = (transform.position - prevPos);
             //rb.AddForce(dropDir * releaseForce, ForceMode.Impulse);
         }
