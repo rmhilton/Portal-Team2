@@ -214,7 +214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &235882598
 RectTransform:
   m_ObjectHideFlags: 0
@@ -764,7 +764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 237.00006, y: -36.000004}
+  m_AnchoredPosition: {x: 237.00006, y: -75}
   m_SizeDelta: {x: 195.0998, y: 119.2523}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &935947702
@@ -786,7 +786,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0.8193936, b: 0, a: 1}
@@ -810,7 +810,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 935947703}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1656530797}
+        m_TargetAssemblyTypeName: SceneHandler, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &935947703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,7 +1123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -243.00002, y: -36.000042}
+  m_AnchoredPosition: {x: -243.00002, y: -75.00003}
   m_SizeDelta: {x: 195.0998, y: 119.2523}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1370317507
@@ -1133,7 +1145,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0.8193936, b: 0, a: 1}
@@ -1144,7 +1156,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 145582461, guid: a66a3cefac4bcc04abcd5eaeff81813c, type: 3}
-    m_PressedSprite: {fileID: -1057265624, guid: a66a3cefac4bcc04abcd5eaeff81813c, type: 3}
+    m_PressedSprite: {fileID: 1206805600, guid: a66a3cefac4bcc04abcd5eaeff81813c, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -1157,7 +1169,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1370317508}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1656530797}
+        m_TargetAssemblyTypeName: SceneHandler, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TitleMenu
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1370317508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1269,7 +1293,7 @@ Canvas:
   m_GameObject: {fileID: 1580787087}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1442479854}
   m_PlaneDistance: 0.5
   m_PixelPerfect: 0
@@ -1508,6 +1532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1656530798}
   - component: {fileID: 1656530797}
+  - component: {fileID: 1656530799}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1542,6 +1567,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1656530799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656530796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82956e5f7803fae448f6e8eff4d018d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 235882597}
 --- !u!1001 &2001819868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1751,6 +1789,6 @@ SceneRoots:
   - {fileID: 2001819868}
   - {fileID: 1650759811}
   - {fileID: 142177642}
-  - {fileID: 1656530798}
   - {fileID: 1580787091}
   - {fileID: 1259661676}
+  - {fileID: 1656530798}
