@@ -8,7 +8,7 @@ public class ButtonTrigger : MonoBehaviour
 {
     private bool pressed = false;
 
-    [SerializeField] private WeightedButton control;
+    [SerializeField] private Button control;
 
     private void OnTriggerEnter(Collider other)
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WeightedButton : MonoBehaviour
+public class Button : MonoBehaviour
 {
     public UnityEvent<bool> buttonPressed;
 }

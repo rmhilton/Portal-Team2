@@ -41,7 +41,11 @@ public class InteractController : MonoBehaviour
                 }
                 else if (hit.transform.gameObject.CompareTag("Interactable"))
                 {
-                    InteractWithObj();
+                    if(hit.transform.gameObject.GetComponent<ManualButton>())
+                    {
+                        InteractWithObj(hit.transform.gameObject.GetComponent<ManualButton>());
+                    }
+                    
                 }
             }
         }
@@ -51,9 +55,9 @@ public class InteractController : MonoBehaviour
         }
     }
 
-    private void InteractWithObj()
+    private void InteractWithObj(ManualButton btn)
     {
-        //call the function on object to interact
+        btn.PressButton();
     }
 
     private void PickUpObj(GrabbableObject obj)
