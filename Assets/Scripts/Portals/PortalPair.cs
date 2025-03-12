@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PortalPairScriptableObj : ScriptableObject
+public class PortalPair : MonoBehaviour
 {
     public Portal a;
     public Portal b;
