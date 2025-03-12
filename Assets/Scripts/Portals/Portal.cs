@@ -34,10 +34,12 @@ public class Portal : MonoBehaviour
 
     void UpdateCamera()
     {
+        portalView.projectionMatrix = Camera.main.projectionMatrix;
+        /*
         var offset = transform.InverseTransformPoint(Camera.main.transform.position);
         offset = Vector3.Scale(offset, new Vector3(1, 1, 1));
         pair.getPartner(this).portalView.transform.position = pair.getPartner(this).transform.TransformPoint(offset);
-
+        */
         var offRotation = transform.InverseTransformDirection(Camera.main.transform.forward);
         offRotation = Vector3.Scale(offRotation, new Vector3(-1, 1, -1));
         pair.getPartner(this).portalView.transform.forward = pair.getPartner(this).transform.TransformDirection(offRotation); 
@@ -49,8 +51,6 @@ public class Portal : MonoBehaviour
         {
             if (!other.GetComponent<PlayerManager>().teleported)
             {
-                other.GetComponent<PlayerManager>().teleported = true;
-
                 var relativeposition = transform.InverseTransformPoint(other.transform.position);
                 relativeposition = Vector3.Scale(relativeposition, new Vector3(1, 1, 1));
                 other.transform.position = pair.getPartner(this).transform.TransformPoint(relativeposition);
@@ -58,6 +58,8 @@ public class Portal : MonoBehaviour
                 var relativeRot = transform.InverseTransformDirection(other.transform.forward);
                 relativeRot = Vector3.Scale(relativeRot, new Vector3(-1, 1, -1));
                 other.transform.forward = pair.getPartner(this).transform.TransformDirection(relativeRot);
+
+                other.GetComponent<PlayerManager>().teleported = this;
             }
         }
     }
@@ -65,7 +67,10 @@ public class Portal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerManager>().teleported = false;
+            if (other.GetComponent<PlayerManager>().teleported != this)
+            {
+                other.GetComponent<PlayerManager>().teleported = null;
+            }
         }
     }
 }

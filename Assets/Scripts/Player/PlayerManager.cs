@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     bool grounded = false;
 
     //teleport lock
-    public bool teleported = false;
+    public Portal teleported;
 
     private void Start()
     {
