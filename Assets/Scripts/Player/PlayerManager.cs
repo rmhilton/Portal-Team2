@@ -30,6 +30,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     bool grounded = false;
 
+    //teleport lock
+    public bool teleported = false;
 
     private void Start()
     {
