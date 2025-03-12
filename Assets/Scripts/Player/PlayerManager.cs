@@ -30,8 +30,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     bool grounded = false;
 
-    //interactions
-    [SerializeField] private InteractController interactController;
 
     private void Start()
     {
@@ -129,14 +127,46 @@ public class PlayerManager : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             //Debug.Log("Interact button pressed!");
-            if(interactController)
+            if (InteractController.instance)
             {
-                interactController.AttemptInteract();
+                InteractController.instance.AttemptInteract();
             }
             else
             {
-                Debug.Log("No Interact Controller set in Player script");
+                Debug.Log("No Interact Controller instance!");
             }
+        }
+    }
+
+    public void AltInteractInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            //Debug.Log("Interact button pressed!");
+            if (InteractController.instance)
+            {
+                InteractController.instance.AttemptAltInteract();
+            }
+            else
+            {
+                Debug.Log("No Interact Controller instance!");
+            }
+        }
+    }
+
+    public void MenuInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            if(PauseMenu.instance)
+            {
+                PauseMenu.instance.PauseButtonPressed();
+            }
+            else
+            {
+                Debug.Log("Error: No Pause menu detected!");
+            }
+            
         }
     }
 }

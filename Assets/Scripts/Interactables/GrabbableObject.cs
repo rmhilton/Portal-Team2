@@ -50,7 +50,7 @@ public class GrabbableObject : InteractableObject
             rb.freezeRotation = false;
             goalPos = null;
             transform.parent = null;
-            Vector3 dropDir = (transform.position - prevPos);
+            //Vector3 dropDir = (transform.position - prevPos);
             //rb.AddForce(dropDir * releaseForce, ForceMode.Impulse);
         }
     }

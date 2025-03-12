@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class InteractController : MonoBehaviour
 {
+    public static InteractController instance;
+
     [SerializeField] private Transform holdArea;
     private GrabbableObject grabbedObj;
 
     [SerializeField] private float pickupRange = 5f;
     [SerializeField] private float maxDistToGoal = 6f;
+    [SerializeField] private float throwForce = 10f;
 
     [SerializeField] private LayerMask interactLayer;
 
+    private void Start()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.Log("Error: Interact Controller already set!");
+            this.enabled = false;
+        }
+    }
     private void FixedUpdate()
     {
         if(grabbedObj)
@@ -55,6 +70,11 @@ public class InteractController : MonoBehaviour
         }
     }
 
+    public void AttemptAltInteract()
+    {
+        ThrowObj();
+    }
+
     private void InteractWithObj(ManualButton btn)
     {
         btn.PressButton();
@@ -66,7 +86,7 @@ public class InteractController : MonoBehaviour
         grabbedObj.Interact(true, holdArea);
     }
 
-    private void DropObj()
+    public void DropObj()
     {
         if(grabbedObj)
         {
@@ -78,6 +98,11 @@ public class InteractController : MonoBehaviour
     
     private void ThrowObj()
     {
-        //add this in for fun later, will throw object in direction of camera
+        if(grabbedObj)
+        {
+            grabbedObj.Interact(false);
+            grabbedObj.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * throwForce, ForceMode.Impulse);
+            grabbedObj = null;
+        }
     }
 }

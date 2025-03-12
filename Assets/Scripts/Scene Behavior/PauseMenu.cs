@@ -9,30 +9,40 @@ using UnityEngine;
 /////////////////////////////////////////////
 public class PauseMenu : MonoBehaviour
 {
+    public static PauseMenu instance;
+
     public GameObject pauseMenu;
     private bool isPaused;
 
     void Start()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.Log("Pause Menu instance already set!");
+            this.enabled = false;
+            return;
+        }
+        
         pauseMenu.SetActive(false);
     }
-    private void Update()
+    
+    public void PauseButtonPressed()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(isPaused)
         {
-            if (isPaused)
-            {
-
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
-            }
+            ResumeGame();
+        }
+        else
+        {
+            PauseGame();
         }
     }
-  
-    public void PauseGame()
+
+    private void PauseGame()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -42,7 +52,7 @@ public class PauseMenu : MonoBehaviour
         print("Game paused");
     }
 
-    public void ResumeGame()
+    private void ResumeGame()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
