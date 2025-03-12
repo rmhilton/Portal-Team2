@@ -172,7 +172,7 @@ MonoBehaviour:
   maxDistToGoal: 4
   interactLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
 --- !u!1 &6442086948051864879
 GameObject:
   m_ObjectHideFlags: 0
