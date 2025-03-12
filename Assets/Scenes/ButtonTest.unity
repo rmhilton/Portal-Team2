@@ -424,10 +424,6 @@ PrefabInstance:
       propertyPath: maxDistToGoal
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1047160602244822086, guid: e91360f9d634607488c7246cd8418a79, type: 3}
-      propertyPath: interactLayer.m_Bits
-      value: 384
-      objectReference: {fileID: 0}
     - target: {fileID: 6476957371471249361, guid: e91360f9d634607488c7246cd8418a79, type: 3}
       propertyPath: cameraPos
       value: 
@@ -736,10 +732,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2605716400873927467, guid: 0cf247299cb7a2548926764cd9cdb684, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 192
-      objectReference: {fileID: 0}
     - target: {fileID: 2605716400873927467, guid: 0cf247299cb7a2548926764cd9cdb684, type: 3}
       propertyPath: interactController
       value: 
