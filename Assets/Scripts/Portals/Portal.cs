@@ -49,15 +49,20 @@ public class Portal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Transform playerLook = other.transform.Find("Orientation");
             if (!other.GetComponent<PlayerManager>().teleported)
             {
+                other.attachedRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
                 var relativeposition = transform.InverseTransformPoint(other.transform.position);
                 relativeposition = Vector3.Scale(relativeposition, new Vector3(1, 1, 1));
                 other.transform.position = pair.getPartner(this).transform.TransformPoint(relativeposition);
-
+                
                 var relativeRot = transform.InverseTransformDirection(other.transform.forward);
                 relativeRot = Vector3.Scale(relativeRot, new Vector3(-1, 1, -1));
                 other.transform.forward = pair.getPartner(this).transform.TransformDirection(relativeRot);
+
+                other.attachedRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 
                 other.GetComponent<PlayerManager>().teleported = this;
             }
