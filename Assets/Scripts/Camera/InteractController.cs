@@ -95,7 +95,6 @@ public class InteractController : MonoBehaviour
         }
     }
 
-    
     private void ThrowObj()
     {
         if(grabbedObj)

@@ -13,7 +13,9 @@ public class GrabbableObject : InteractableObject
     [SerializeField] private float pickupForce = 150f;
     [SerializeField] private float releaseForce = 10f;
     private Vector3 prevPos;
-    
+
+    [SerializeField] private LayerMask playerMask;
+
 
     private void Start()
     {
@@ -40,6 +42,7 @@ public class GrabbableObject : InteractableObject
                 goalPos = holdGoal;
                 transform.parent = goalPos;
             }
+            rb.excludeLayers += playerMask;
         }
         else
         {
@@ -52,6 +55,7 @@ public class GrabbableObject : InteractableObject
             transform.parent = null;
             //Vector3 dropDir = (transform.position - prevPos);
             //rb.AddForce(dropDir * releaseForce, ForceMode.Impulse);
+            rb.excludeLayers -= playerMask;
         }
     }
 
