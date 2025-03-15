@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 518712325}
   - component: {fileID: 518712324}
   - component: {fileID: 518712323}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,6 +538,63 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
+--- !u!1001 &935001113
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 354184735611264332, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.5232239
+      objectReference: {fileID: 0}
+    - target: {fileID: 354184735611264332, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 354184735611264332, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.4171638
+      objectReference: {fileID: 0}
+    - target: {fileID: 354184735611264332, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 354184735611264332, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 354184735611264332, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 354184735611264332, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 354184735611264332, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 354184735611264332, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 354184735611264332, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755323970652948421, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
+      propertyPath: m_Name
+      value: PickUpCube
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
 --- !u!21 &967693894
 Material:
   serializedVersion: 8
@@ -1362,3 +1419,4 @@ SceneRoots:
   - {fileID: 1401343057}
   - {fileID: 1368486739}
   - {fileID: 2063976735}
+  - {fileID: 935001113}

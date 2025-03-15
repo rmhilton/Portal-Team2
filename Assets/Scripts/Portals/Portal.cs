@@ -61,6 +61,11 @@ public class Portal : MonoBehaviour
                 playerLook.forward = pair.getPartner(this).transform.TransformDirection(relativeRot);
 
                 other.GetComponent<PlayerManager>().teleported = this;
+
+                //code by Raymend to maintain velocity
+                Vector3 startVel = other.GetComponent<PlayerManager>().GetVelocity();
+                Vector3 end_vel = pair.getPartner(this).transform.forward * startVel.magnitude;
+                other.GetComponent<PlayerManager>().SetVelocity(end_vel);
             }
         }
     }

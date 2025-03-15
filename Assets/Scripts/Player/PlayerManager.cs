@@ -92,6 +92,16 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public Vector3 GetVelocity()
+    {
+        return rb.linearVelocity;
+    }
+
+    public void SetVelocity(Vector3 vel)
+    {
+        rb.linearVelocity = vel;
+    }
+
     public void GetInputDir(InputAction.CallbackContext context)
     {
         inputDir = context.ReadValue<Vector2>();
