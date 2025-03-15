@@ -54,13 +54,14 @@ public class PlayerManager : MonoBehaviour
         else
         {
             rb.linearDamping = 0;
-        }
+        } 
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
 
+        //custom gravity
         rb.AddForce(Vector3.down * Physics.gravity.magnitude * 2f, ForceMode.Force);
     }
 
@@ -87,7 +88,7 @@ public class PlayerManager : MonoBehaviour
         if(flatVel.magnitude > moveSpeed)
         {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.y);
+            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
         }
     }
 
