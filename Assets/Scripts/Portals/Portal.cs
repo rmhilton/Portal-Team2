@@ -1,28 +1,28 @@
+using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class Portal : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    Transform playerView;
+    [SerializeField] PortalData data;
     public Camera portalView;
-    [SerializeField] PortalPair pair;
-    bool rendering;
+    public PortalPair pair;
+    public int pairIndex;
+    public bool rendering;
 
     private void Start()
     {
         rendering = false;
-        if (pair.getPartner(this) == null)
+        data = ScriptableObject.CreateInstance<PortalData>();
+        data.init(this, pairIndex);
+        if (pair.getPartner(this))
         {
-
+            StartCoroutine(data.Activate(this));
         }
         else
         {
-            playerView = GameObject.Find("CameraPosition").transform;
-            GetComponent<MeshRenderer>().material.SetTexture("_PortalCam", pair.getPartner(this).portalView.targetTexture);
-            rendering = true;
+            data.Deactivate(this);
         }
-        
     }
     private void Update()
     {

@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 4b0cfd00a71be654b898b51ecb8ce0e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,8 +124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96122b7551891fe43892fc35b923508d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
   portalView: {fileID: 892235053945279800}
   pair: {fileID: 0}
+  pairIndex: 1
+  rendering: 0
 --- !u!1 &9204150209806404514
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,9 +155,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9204150209806404514}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.000002428889, z: -0, w: 1}
-  m_LocalPosition: {x: 0.026, y: 0.084, z: -0.15}
-  m_LocalScale: {x: 0.47183165, y: 0.46234223, z: 4.434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6817086354493153875}
@@ -200,7 +203,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8600000, guid: 7f7cbc8d6629bce4b84325ce09330f47, type: 2}
+  m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
