@@ -55,6 +55,7 @@ public class Turret : MonoBehaviour
         if(Mathf.Abs(transform.localRotation.eulerAngles.x) > 20 || Mathf.Abs(transform.localRotation.eulerAngles.z) > 20)
         {
             anim.SetTrigger("fall");
+            //play sad sound effect, maybe explosion particle
             return false;
         }
         return true;

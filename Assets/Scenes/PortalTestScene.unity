@@ -481,10 +481,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4702246218264992434, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
-      propertyPath: playerMask.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 6755323970652948421, guid: 5186ee8cab88bd248b33e0a5cc6c43dc, type: 3}
       propertyPath: m_Name
       value: PickUpCube

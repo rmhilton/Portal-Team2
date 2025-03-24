@@ -106,6 +106,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupForce: 300
   releaseForce: 5
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &7560128772381891764
 GameObject:
   m_ObjectHideFlags: 0
