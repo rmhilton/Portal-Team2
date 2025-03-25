@@ -76,6 +76,7 @@ public class Portal : MonoBehaviour
             if (other.GetComponent<PlayerManager>().teleported != this)
             {
                 other.GetComponent<PlayerManager>().teleported = null;
+                other.GetComponent<Collider>().excludeLayers -= LayerMask.GetMask("PortalSurface");
             }
         }
     }
