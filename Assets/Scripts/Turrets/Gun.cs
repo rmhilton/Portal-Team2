@@ -8,10 +8,10 @@ public class Gun : MonoBehaviour
         //RestartLevel(); //use this for instant death level reset
         Debug.Log("Player was shot");
     }
-    void RestartLevel()
-    {
-        Scene currentScene = SceneManager.GetActiveScene();
+    //void RestartLevel()
+    //{
+    //    Scene currentScene = SceneManager.GetActiveScene();
 
-        SceneManager.LoadScene(currentScene.name);
-    }
+    //    SceneManager.LoadScene(currentScene.name);
+    //}
 }
