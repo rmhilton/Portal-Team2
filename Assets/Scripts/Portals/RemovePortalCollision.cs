@@ -6,7 +6,6 @@ public class RemovePortalCollision : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Ding!");
             other.GetComponent<Collider>().excludeLayers += LayerMask.GetMask("PortalSurface");
         }
     }
