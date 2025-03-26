@@ -14,6 +14,7 @@ public class Portal : MonoBehaviour
     {
         rendering = false;
         data = ScriptableObject.CreateInstance<PortalData>();
+        data.name = "PortalData" + Random.Range(0, 9999);
         data.init(this, pairIndex);
         if (pair.getPartner(this))
         {

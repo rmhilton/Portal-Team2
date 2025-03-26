@@ -92,9 +92,12 @@ public class PortalGun : MonoBehaviour
             Portal newPortal = Instantiate(portalPrefab, position, transform.rotation).GetComponent<Portal>();
             newPortal.transform.parent = transform;
             Portal partner = newPortal.pair.getPartner(newPortal);
-            if(!partner.rendering)
+            if (newPortal.pair.getPartner(newPortal) != null)
             {
-                partner.data.Activate(partner);
+                if (!partner.rendering)
+                {
+                    partner.data.Activate(partner);
+                }
             }
         }
         
