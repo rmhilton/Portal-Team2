@@ -182,4 +182,9 @@ public class PlayerManager : MonoBehaviour
             
         }
     }
+
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
 }
