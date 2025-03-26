@@ -50,9 +50,9 @@ public class Portal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            print("entered");
             Transform playerLook = other.transform.Find("Orientation");
-            if (!other.GetComponent<PlayerManager>().teleported)
-            {
+
                 var relativeposition = transform.InverseTransformPoint(other.transform.position);
                 relativeposition = Vector3.Scale(relativeposition, new Vector3(1, 1, 1));
                 other.transform.position = pair.getPartner(this).transform.TransformPoint(relativeposition);
@@ -69,18 +69,18 @@ public class Portal : MonoBehaviour
                 Vector3 end_vel = pair.getPartner(this).transform.forward * startVel.magnitude;
                 print(end_vel);
                 other.GetComponent<PlayerManager>().SetVelocity(end_vel);
-            }
+            
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (other.GetComponent<PlayerManager>().teleported != this)
-            {
+            print("Exited!");
+
                 other.GetComponent<PlayerManager>().teleported = null;
                 other.GetComponent<Collider>().excludeLayers -= LayerMask.GetMask("PortalSurface");
-            }
+            
         }
     }
 }
