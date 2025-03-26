@@ -64,7 +64,9 @@ public class Portal : MonoBehaviour
 
                 //code by Raymend to maintain velocity
                 Vector3 startVel = other.GetComponent<PlayerManager>().GetVelocity();
+                print(startVel);
                 Vector3 end_vel = pair.getPartner(this).transform.forward * startVel.magnitude;
+                print(end_vel);
                 other.GetComponent<PlayerManager>().SetVelocity(end_vel);
             }
         }
