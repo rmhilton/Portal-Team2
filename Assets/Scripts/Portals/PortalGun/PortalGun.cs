@@ -20,7 +20,8 @@ public class PortalGun : MonoBehaviour
                     }
                     else
                     {
-                        TryMovePortal(hit.point, hit.transform, 1);
+                        Destroy(pair.a.gameObject);
+                        TryPlacePortal(hit.point, hit.transform, 1);
                     }
                 }
             }
@@ -41,7 +42,8 @@ public class PortalGun : MonoBehaviour
                     }
                     else
                     {
-                        TryMovePortal(hit.point, hit.transform, 2);
+                        Destroy(pair.b.gameObject);
+                        TryPlacePortal(hit.point, hit.transform, 2);
                     }
                 }
             }
