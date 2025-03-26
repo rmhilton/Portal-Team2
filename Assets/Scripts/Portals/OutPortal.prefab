@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1570372817358342121}
   - component: {fileID: 2609849345963628125}
   - component: {fileID: 4781397214489920834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WallColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 7630421131350894396}
   - component: {fileID: 7367104016834498322}
   - component: {fileID: 6229181795560429091}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RemoveCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.1, y: 4.78, z: 14.71}
-  m_LocalScale: {x: 2.1194, y: 2.1629, z: 0.22553}
+  m_LocalScale: {x: 1.4262714, y: 1.4555452, z: 0.15177266}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5454532936623594793}

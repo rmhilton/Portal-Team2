@@ -18,7 +18,6 @@ public class PortalSettings : MonoBehaviour
     }
     #endregion
 
-    public RenderTexture PortalRender;
     public Material PortalMaterial;
     public Texture PortalAInactive;
     public Texture PortalBInactive;

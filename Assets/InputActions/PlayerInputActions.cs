@@ -71,6 +71,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GunPrimaryInput"",
+                    ""type"": ""Button"",
+                    ""id"": ""c417ef12-483a-4a21-84d2-0baa30e410e6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GunSecondaryInput"",
+                    ""type"": ""Button"",
+                    ""id"": ""03f6a12a-0cf4-41c6-935d-9e96c61ace99"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +190,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Alt Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4dfafdf9-5078-42df-b69d-31f3dcfbab7a"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GunPrimaryInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a39652e-b66e-47dc-b930-2c0a03ae9e28"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GunSecondaryInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +225,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         m_Player_AltInteract = m_Player.FindAction("Alt Interact", throwIfNotFound: true);
+        m_Player_GunPrimaryInput = m_Player.FindAction("GunPrimaryInput", throwIfNotFound: true);
+        m_Player_GunSecondaryInput = m_Player.FindAction("GunSecondaryInput", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -256,6 +298,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Menu;
     private readonly InputAction m_Player_AltInteract;
+    private readonly InputAction m_Player_GunPrimaryInput;
+    private readonly InputAction m_Player_GunSecondaryInput;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -265,6 +309,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputAction @AltInteract => m_Wrapper.m_Player_AltInteract;
+        public InputAction @GunPrimaryInput => m_Wrapper.m_Player_GunPrimaryInput;
+        public InputAction @GunSecondaryInput => m_Wrapper.m_Player_GunSecondaryInput;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -289,6 +335,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AltInteract.started += instance.OnAltInteract;
             @AltInteract.performed += instance.OnAltInteract;
             @AltInteract.canceled += instance.OnAltInteract;
+            @GunPrimaryInput.started += instance.OnGunPrimaryInput;
+            @GunPrimaryInput.performed += instance.OnGunPrimaryInput;
+            @GunPrimaryInput.canceled += instance.OnGunPrimaryInput;
+            @GunSecondaryInput.started += instance.OnGunSecondaryInput;
+            @GunSecondaryInput.performed += instance.OnGunSecondaryInput;
+            @GunSecondaryInput.canceled += instance.OnGunSecondaryInput;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -308,6 +360,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AltInteract.started -= instance.OnAltInteract;
             @AltInteract.performed -= instance.OnAltInteract;
             @AltInteract.canceled -= instance.OnAltInteract;
+            @GunPrimaryInput.started -= instance.OnGunPrimaryInput;
+            @GunPrimaryInput.performed -= instance.OnGunPrimaryInput;
+            @GunPrimaryInput.canceled -= instance.OnGunPrimaryInput;
+            @GunSecondaryInput.started -= instance.OnGunSecondaryInput;
+            @GunSecondaryInput.performed -= instance.OnGunSecondaryInput;
+            @GunSecondaryInput.canceled -= instance.OnGunSecondaryInput;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -332,5 +390,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnAltInteract(InputAction.CallbackContext context);
+        void OnGunPrimaryInput(InputAction.CallbackContext context);
+        void OnGunSecondaryInput(InputAction.CallbackContext context);
     }
 }

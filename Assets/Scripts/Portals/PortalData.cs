@@ -14,7 +14,6 @@ public class PortalData : ScriptableObject
         renderTexture = new CustomRenderTexture(512,512);
         renderTexture.updateMode = CustomRenderTextureUpdateMode.Realtime;
         portal.portalView.targetTexture = renderTexture;
-        Debug.Log("ding");
 
         //if there is no assigned pair instance
         if (portal.pair == null)
@@ -65,7 +64,6 @@ public class PortalData : ScriptableObject
         else
         {
             pair = portal.pair;
-            Debug.Log("blink");
             material = new Material(PortalSettings.instance.PortalMaterial);
             portal.GetComponent<Renderer>().material = material;
             Activate(portal);
@@ -75,14 +73,12 @@ public class PortalData : ScriptableObject
     public IEnumerator Activate(Portal portal)
     {
         yield return new WaitForSeconds(0.001f);
-        Debug.Log("Dong");
         Debug.Log(pair.getPartner(portal));
         portal.gameObject.GetComponent<Renderer>().material.SetTexture("_PortalCam", pair.getPartner(portal).portalView.targetTexture);
         portal.rendering = true;
     }
     public void Deactivate(Portal portal)
     {
-        Debug.Log("deactive");
         material.SetTexture("_PortalCam", offTexture);
         portal.rendering = false;
     }
