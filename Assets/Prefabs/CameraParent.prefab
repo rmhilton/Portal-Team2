@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdArea: {fileID: 6490571725046091672}
-  pickupRange: 6
-  maxDistToGoal: 4
+  pickupRange: 4
+  maxDistToGoal: 3
   throwForce: 10
   interactLayer:
     serializedVersion: 2
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 6490571725046091672}
   - component: {fileID: 3407231301853090332}
   - component: {fileID: 8526558667054551823}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hold Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1105457043714056099}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hold Area Const
   m_TagString: Untagged
   m_Icon: {fileID: 0}
