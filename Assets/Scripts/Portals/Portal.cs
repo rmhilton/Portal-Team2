@@ -14,6 +14,7 @@ public class Portal : MonoBehaviour
     {
         rendering = false;
         data = ScriptableObject.CreateInstance<PortalData>();
+        data.name = "PortalData" + Random.Range(0, 9999);
         data.init(this, pairIndex);
         if (pair.getPartner(this))
         {
@@ -51,11 +52,13 @@ public class Portal : MonoBehaviour
         {
             print("entered");
             Transform playerLook = other.transform.Find("Orientation");
-
+            if(other.GetComponent<PlayerManager>().teleported == null)
+            {
+                print("teleported != null!");
                 var relativeposition = transform.InverseTransformPoint(other.transform.position);
                 relativeposition = Vector3.Scale(relativeposition, new Vector3(1, 1, 1));
                 other.transform.position = pair.getPartner(this).transform.TransformPoint(relativeposition);
-                
+
                 var relativeRot = transform.InverseTransformDirection(playerLook.forward);
                 relativeRot = Vector3.Scale(relativeRot, new Vector3(-1, 1, -1));
                 playerLook.forward = pair.getPartner(this).transform.TransformDirection(relativeRot);
@@ -68,6 +71,7 @@ public class Portal : MonoBehaviour
                 Vector3 end_vel = pair.getPartner(this).transform.forward * startVel.magnitude;
                 print(end_vel);
                 other.GetComponent<PlayerManager>().SetVelocity(end_vel);
+            }    
             
         }
     }
@@ -76,10 +80,12 @@ public class Portal : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             print("Exited!");
-
+            if (other.GetComponent<PlayerManager>().teleported != this)
+            {
+                print("teleported = null!");
                 other.GetComponent<PlayerManager>().teleported = null;
                 other.GetComponent<Collider>().excludeLayers -= LayerMask.GetMask("PortalSurface");
-            
+            }
         }
     }
 }

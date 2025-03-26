@@ -14,6 +14,7 @@ public class PortalData : ScriptableObject
     {
         active = false;
         renderTexture = new CustomRenderTexture(512,512);
+        renderTexture.name = "RenderTexture" + Random.Range(0, 9999);
         renderTexture.updateMode = CustomRenderTextureUpdateMode.Realtime;
         portal.portalView.targetTexture = renderTexture;
 
@@ -74,11 +75,10 @@ public class PortalData : ScriptableObject
     }
     public IEnumerator Activate(Portal portal)
     {
-        yield return new WaitForSeconds(0.001f);
+        yield return new WaitForSeconds(0.002f);
         Debug.Log(pair.getPartner(portal));
         portal.gameObject.GetComponent<Renderer>().material.SetTexture("_PortalCam", pair.getPartner(portal).portalView.targetTexture);
         portal.rendering = true;
-        Portal partner = pair.getPartner(portal);
     }
     public void Deactivate(Portal portal)
     {
