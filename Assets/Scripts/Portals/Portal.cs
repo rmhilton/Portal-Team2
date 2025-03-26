@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 
 public class Portal : MonoBehaviour
 {
-    [SerializeField] PortalData data;
+    public PortalData data;
     public Camera portalView;
     public PortalPair pair;
     public int pairIndex;

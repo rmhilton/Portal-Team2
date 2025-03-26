@@ -78,14 +78,11 @@ public class PortalData : ScriptableObject
         Debug.Log(pair.getPartner(portal));
         portal.gameObject.GetComponent<Renderer>().material.SetTexture("_PortalCam", pair.getPartner(portal).portalView.targetTexture);
         portal.rendering = true;
-        if (!pair.getPartner(portal).rendering)
-        {
-            Activate(pair.getPartner(portal));
-        }
+        Portal partner = pair.getPartner(portal);
     }
     public void Deactivate(Portal portal)
     {
-        material.SetTexture("_PortalCam", offTexture);
+        portal.gameObject.GetComponent<Renderer>().material.SetTexture("_PortalCam", offTexture);
         portal.rendering = false;
         active = false;
     }
