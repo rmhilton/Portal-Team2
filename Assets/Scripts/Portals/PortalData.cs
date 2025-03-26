@@ -9,8 +9,10 @@ public class PortalData : ScriptableObject
     public CustomRenderTexture renderTexture;
     public Texture offTexture;
     public Material material;
+    public bool active;
     public void init(Portal portal, int pairIndex)
     {
+        active = false;
         renderTexture = new CustomRenderTexture(512,512);
         renderTexture.updateMode = CustomRenderTextureUpdateMode.Realtime;
         portal.portalView.targetTexture = renderTexture;
@@ -76,10 +78,15 @@ public class PortalData : ScriptableObject
         Debug.Log(pair.getPartner(portal));
         portal.gameObject.GetComponent<Renderer>().material.SetTexture("_PortalCam", pair.getPartner(portal).portalView.targetTexture);
         portal.rendering = true;
+        if (!pair.getPartner(portal).rendering)
+        {
+            Activate(pair.getPartner(portal));
+        }
     }
     public void Deactivate(Portal portal)
     {
         material.SetTexture("_PortalCam", offTexture);
         portal.rendering = false;
+        active = false;
     }
 }

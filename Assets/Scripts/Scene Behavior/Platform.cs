@@ -15,6 +15,7 @@ public class Platform : MonoBehaviour
     //how many times to move if in DoTimes mode
     [SerializeField] int moveTimes;
     int timesMoved = 0;
+    [SerializeField] bool looping;
 
     //bool to store whether platform is on
     [SerializeField] bool shouldDo;
@@ -99,7 +100,10 @@ public class Platform : MonoBehaviour
             }
             else
             {
-                shouldDo = false;
+                if (!looping)
+                {
+                    shouldDo = false;
+                }
                 timesMoved = 0;
             }
         }
