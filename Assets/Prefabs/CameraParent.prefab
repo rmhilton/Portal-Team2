@@ -168,7 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658267f61093f8b49b78d59e5668d446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdAreaConst: {fileID: 1105457043714056099}
   holdArea: {fileID: 6490571725046091672}
+  holdRaycastLayers:
+    serializedVersion: 2
+    m_Bits: 65
   pickupRange: 4
   maxDistToGoal: 3
   throwForce: 10

@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -33,6 +34,8 @@ public class PlayerManager : MonoBehaviour
     //teleport lock
     public Portal teleported;
 
+    public Vector3 vel;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -54,7 +57,8 @@ public class PlayerManager : MonoBehaviour
         else
         {
             rb.linearDamping = 0;
-        } 
+        }
+        vel = rb.linearVelocity;
     }
 
     private void FixedUpdate()
@@ -84,6 +88,11 @@ public class PlayerManager : MonoBehaviour
     {
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
+        if(!grounded)
+        {
+            return;
+        }
+
         //limit velocity if needed
         if(flatVel.magnitude > moveSpeed)
         {
@@ -99,7 +108,10 @@ public class PlayerManager : MonoBehaviour
 
     public void SetVelocity(Vector3 vel)
     {
+        rb.linearVelocity = Vector3.zero;
         rb.linearVelocity = vel;
+        //rb.AddForce(vel, ForceMode.Impulse);
+
     }
 
     public void GetInputDir(InputAction.CallbackContext context)

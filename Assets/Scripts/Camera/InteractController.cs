@@ -6,14 +6,18 @@ public class InteractController : MonoBehaviour
 {
     public static InteractController instance;
 
+    [SerializeField] private Transform holdAreaConst;
     [SerializeField] private Transform holdArea;
     private GrabbableObject grabbedObj;
+    [SerializeField] private LayerMask holdRaycastLayers;
 
     [SerializeField] private float pickupRange = 5f;
     [SerializeField] private float maxDistToGoal = 6f;
     [SerializeField] private float throwForce = 10f;
 
     [SerializeField] private LayerMask interactLayer;
+
+    
 
     private void Start()
     {
@@ -27,6 +31,24 @@ public class InteractController : MonoBehaviour
             this.enabled = false;
         }
     }
+
+    private void Update()
+    {
+        RaycastHit hit;
+        //Debug.DrawLine(transform.position, transform.position + Camera.main.transform.forward * pickupRange, Color.magenta, 3f);
+        if (Physics.Raycast(transform.position, Camera.main.transform.forward, out hit, pickupRange, holdRaycastLayers))
+        {
+            if(hit.collider != null)
+            {
+                holdArea.position = hit.point;
+            }
+            else
+            {
+                holdArea.position = holdAreaConst.position;
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
         if(grabbedObj)
