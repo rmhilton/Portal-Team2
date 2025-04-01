@@ -14,7 +14,7 @@ public class RemovePortalCollision : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        return;
+        //return;
         //unused
         if (other.CompareTag("Player"))
         {

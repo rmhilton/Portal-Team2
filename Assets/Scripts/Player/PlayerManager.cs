@@ -31,6 +31,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float playerHeight = 2f;
     [SerializeField] private LayerMask groundLayer;
     bool grounded = false;
+    bool stopAirDrag = false;
 
     //teleport lock
     public Portal teleported;
@@ -47,6 +48,9 @@ public class PlayerManager : MonoBehaviour
     {
         //ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * .5f + 0.2f, groundLayer);
+
+        //resume air drag when grounded
+        if(grounded && stopAirDrag) { stopAirDrag = false; }
 
         SpeedControl();
 
@@ -98,7 +102,7 @@ public class PlayerManager : MonoBehaviour
                 rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
             }
         }
-        else
+        else if(!stopAirDrag)
         {
             if (flatVel.magnitude > moveSpeed)
             {
@@ -115,17 +119,13 @@ public class PlayerManager : MonoBehaviour
 
     public void SetVelocity(Vector3 vel)
     {
+        print(vel);
         rb.linearVelocity = Vector3.zero;
-        //rb.linearVelocity = vel;
+        Debug.Break();
         rb.AddForce(vel, ForceMode.Impulse);
-        StopAllCoroutines();
-        //StartCoroutine(DelayVel(vel, 0.1f));
-    }
 
-    public IEnumerator DelayVel(Vector3 vel, float time)
-    {
-        yield return new WaitForSeconds(time);
-        rb.AddForce(vel, ForceMode.Impulse);
+        //this is only called when teleporting, so temporarily disable air drag
+        stopAirDrag = true;
     }
 
     public void GetInputDir(InputAction.CallbackContext context)
@@ -212,5 +212,16 @@ public class PlayerManager : MonoBehaviour
     public float GetMoveSpeed()
     {
         return moveSpeed;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(!collision.collider.isTrigger)
+        {
+            if(stopAirDrag)
+            {
+                stopAirDrag = false;
+            }
+        }
     }
 }
