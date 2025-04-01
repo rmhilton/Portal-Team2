@@ -18,11 +18,21 @@ public class LoadNextScene : MonoBehaviour
         if (nextSceneIndex >= SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(0);
+            ResumeGame();
         }
         else
         {
             SceneManager.LoadScene(nextSceneIndex);
         }
         
+    }
+    private void ResumeGame()
+    {
+        
+        Time.timeScale = 1f;
+
+       // Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+  
     }
 }
