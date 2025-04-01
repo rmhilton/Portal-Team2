@@ -33,6 +33,8 @@ public class PlayerManager : MonoBehaviour
     bool grounded = false;
     bool stopAirDrag = false;
 
+    [SerializeField] private bool breakOnTeleport = false;
+
     //teleport lock
     public Portal teleported;
 
@@ -121,7 +123,10 @@ public class PlayerManager : MonoBehaviour
     {
         print(vel);
         rb.linearVelocity = Vector3.zero;
-        //Debug.Break();
+        if(breakOnTeleport)
+        {
+            Debug.Break();
+        }
         rb.AddForce(vel, ForceMode.Impulse);
 
         //this is only called when teleporting, so temporarily disable air drag
