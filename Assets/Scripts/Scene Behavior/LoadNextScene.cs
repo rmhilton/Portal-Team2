@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 //making this script to have an on trigger enter that moves player to next scene in build.
@@ -14,6 +15,14 @@ public class LoadNextScene : MonoBehaviour
    public  void NextSceneLoad()
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
+        if (nextSceneIndex > SceneManager.sceneCount)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        
     }
 }
