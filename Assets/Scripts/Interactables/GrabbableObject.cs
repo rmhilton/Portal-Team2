@@ -11,7 +11,6 @@ public class GrabbableObject : InteractableObject
     //[SerializeField] private float maxMoveSpeed = 5.0f;
     //[SerializeField] private float maxCatchUpDist = 1.2f;
     [SerializeField] private float pickupForce = 150f;
-    [SerializeField] private float releaseForce = 10f;
     private Vector3 prevPos;
 
     [SerializeField] private LayerMask playerMask;

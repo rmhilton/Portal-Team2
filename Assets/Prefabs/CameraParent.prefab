@@ -189,7 +189,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6490571725046091672}
   - component: {fileID: 3407231301853090332}
-  - component: {fileID: 8526558667054551823}
   m_Layer: 13
   m_Name: Hold Area
   m_TagString: Untagged
@@ -233,19 +232,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8526558667054551823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6442086948051864879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6518454393a4bc408b5738e135febc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holdAreaConst: {fileID: 0}
 --- !u!1 &8917439768868533813
 GameObject:
   m_ObjectHideFlags: 0
