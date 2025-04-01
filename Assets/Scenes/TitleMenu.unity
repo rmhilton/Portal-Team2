@@ -437,7 +437,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Joe Inman
 
-    Raymond HIlton
+    Raymend HIlton
 
     Milo Rodgers
 
@@ -1573,8 +1573,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Instructions: Use your wit to progress your way through the tests. The
-    portals go both ways; you''d do well to remember this.'
+  m_text: 'WASD - Move
+
+    Spacebar - Jump
+
+    E - Interact
+
+    Left Click - Throw
+    Cube'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6f39965b57e5d64794ed660622147c6, type: 2}
   m_sharedMaterial: {fileID: 6185082350247907401, guid: f6f39965b57e5d64794ed660622147c6, type: 2}

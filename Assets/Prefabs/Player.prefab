@@ -106,6 +106,7 @@ MonoBehaviour:
   moveSpeed: 7
   orientation: {fileID: 7692649477847329402}
   groundDrag: 6
+  airDrag: 3
   jumpForce: 8
   jumpCooldown: 0.25
   airMultiplier: 0.6
@@ -114,6 +115,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   teleported: {fileID: 0}
+  vel: {x: 0, y: 0, z: 0}
 --- !u!114 &2733852632570179376
 MonoBehaviour:
   m_ObjectHideFlags: 0

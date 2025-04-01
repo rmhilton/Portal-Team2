@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     private Rigidbody rb;
 
     [SerializeField] private float groundDrag = 5f;
+    [SerializeField] private float airDrag = 3f;
 
     //air movement
     [SerializeField] private float jumpForce = 12f;
@@ -88,16 +89,22 @@ public class PlayerManager : MonoBehaviour
     {
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
-        if(!grounded)
-        {
-            return;
-        }
-
         //limit velocity if needed
-        if(flatVel.magnitude > moveSpeed)
+        if(grounded)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+            if (flatVel.magnitude > moveSpeed)
+            {
+                Vector3 limitedVel = flatVel.normalized * moveSpeed;
+                rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+            }
+        }
+        else
+        {
+            if (flatVel.magnitude > moveSpeed)
+            {
+                Vector3 limitedVel = flatVel * (1 - Time.deltaTime * airDrag);
+                rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+            }
         }
     }
 
@@ -109,9 +116,16 @@ public class PlayerManager : MonoBehaviour
     public void SetVelocity(Vector3 vel)
     {
         rb.linearVelocity = Vector3.zero;
-        rb.linearVelocity = vel;
-        //rb.AddForce(vel, ForceMode.Impulse);
+        //rb.linearVelocity = vel;
+        rb.AddForce(vel, ForceMode.Impulse);
+        StopAllCoroutines();
+        //StartCoroutine(DelayVel(vel, 0.1f));
+    }
 
+    public IEnumerator DelayVel(Vector3 vel, float time)
+    {
+        yield return new WaitForSeconds(time);
+        rb.AddForce(vel, ForceMode.Impulse);
     }
 
     public void GetInputDir(InputAction.CallbackContext context)
