@@ -5,9 +5,10 @@ public class PortalGun : MonoBehaviour
 {
     [SerializeField] PortalPair pair;
     [SerializeField] GameObject portalPrefab;
+    public bool gunIsOn;
     public void GunPrimaryInput(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
+        if(context.phase == InputActionPhase.Performed && gunIsOn)
         {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity, LayerMask.GetMask("Ground", "Default", "PortalSurface")))
@@ -29,7 +30,7 @@ public class PortalGun : MonoBehaviour
     }
     public void GunSecondaryInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed && gunIsOn)
         {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity, LayerMask.GetMask("Ground","Default","PortalSurface")))
