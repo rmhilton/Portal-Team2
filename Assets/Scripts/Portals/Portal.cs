@@ -69,15 +69,16 @@ public class Portal : MonoBehaviour
                 //code by Raymend to maintain velocity
                 Vector3 startVel = other.GetComponent<PlayerManager>().GetVelocity();
                 print(startVel);
-                //velocity is in world
-                Vector3 relativePortalForce = transform.InverseTransformDirection(startVel);
-                //velocity is local to portal
-                relativePortalForce = pair.getPartner(this).transform.TransformDirection(relativePortalForce);
-                Debug.Log(relativePortalForce);
-                relativePortalForce = Vector3.Scale(relativePortalForce, new Vector3(-1, 1, -1));
-                //VELOCITY IS CORRECTLY APPLIED TO GLOBAL
-                Vector3 relativePlayerForce = other.transform.InverseTransformDirection(relativePortalForce);
-                Vector3 end_vel = relativePlayerForce;
+                ////velocity is in world
+                //Vector3 relativePortalForce = transform.InverseTransformDirection(startVel);
+                ////velocity is local to portal
+                //relativePortalForce = pair.getPartner(this).transform.TransformDirection(relativePortalForce);
+                //Debug.Log(relativePortalForce);
+                //relativePortalForce = Vector3.Scale(relativePortalForce, new Vector3(-1, 1, -1));
+                ////VELOCITY IS CORRECTLY APPLIED TO GLOBAL
+                //Vector3 relativePlayerForce = other.transform.InverseTransformDirection(relativePortalForce);
+                //Vector3 end_vel = relativePlayerForce;
+                Vector3 end_vel = pair.getPartner(this).transform.forward * startVel.magnitude;
                 print(end_vel);
                 other.GetComponent<PlayerManager>().SetVelocity(end_vel);
             }    

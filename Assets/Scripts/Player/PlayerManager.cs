@@ -33,12 +33,18 @@ public class PlayerManager : MonoBehaviour
     bool grounded = false;
     bool stopAirDrag = false;
 
+    //break for debug
     [SerializeField] private bool breakOnTeleport = false;
 
     //teleport lock
     public Portal teleported;
 
     public Vector3 vel;
+
+    //stored velocity for teleport
+    private Vector3 storedVel = Vector3.zero;
+    private int framesToStoreVel = 10;
+    private int currentStoredVelFrame = 0;
 
     private void Start()
     {
@@ -74,6 +80,21 @@ public class PlayerManager : MonoBehaviour
 
         //custom gravity
         rb.AddForce(Vector3.down * Physics.gravity.magnitude * 2f, ForceMode.Force);
+
+        if(rb.linearVelocity.magnitude > storedVel.magnitude)
+        {
+            storedVel = rb.linearVelocity;
+            currentStoredVelFrame = 0;
+        }
+        else
+        {
+            currentStoredVelFrame++;
+            if (currentStoredVelFrame >= framesToStoreVel)
+            {
+                currentStoredVelFrame = 0;
+                storedVel = rb.linearVelocity;
+            }
+        }
     }
 
     private void MovePlayer()
@@ -116,7 +137,7 @@ public class PlayerManager : MonoBehaviour
 
     public Vector3 GetVelocity()
     {
-        return rb.linearVelocity;
+        return storedVel;
     }
 
     public void SetVelocity(Vector3 vel)
