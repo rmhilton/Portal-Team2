@@ -47,26 +47,37 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && pair.getPartner(this) != null)
         {
             print("entered");
             Transform playerLook = other.transform.Find("Orientation");
-            if(other.GetComponent<PlayerManager>().teleported == null)
+            if(other.GetComponent<PlayerManager>().teleported != this)
             {
                 print("teleported != null!");
                 var relativeposition = transform.InverseTransformPoint(other.transform.position);
                 relativeposition = Vector3.Scale(relativeposition, new Vector3(1, 1, 1));
                 other.transform.position = pair.getPartner(this).transform.TransformPoint(relativeposition);
 
-                var relativeRot = transform.InverseTransformDirection(playerLook.forward);
-                relativeRot = Vector3.Scale(relativeRot, new Vector3(-1, 1, -1));
-                playerLook.forward = pair.getPartner(this).transform.TransformDirection(relativeRot);
+                if (transform.up == Vector3.up)
+                {
+                    var relativeRot = transform.InverseTransformDirection(playerLook.forward);
+                    relativeRot = Vector3.Scale(relativeRot, new Vector3(-1, 1, -1));
+                    playerLook.forward = pair.getPartner(this).transform.TransformDirection(relativeRot);
+                }
 
-                other.GetComponent<PlayerManager>().teleported = this;
+                other.GetComponent<PlayerManager>().teleported = pair.getPartner(this);
                 //code by Raymend to maintain velocity
                 Vector3 startVel = other.GetComponent<PlayerManager>().GetVelocity();
                 print(startVel);
-                Vector3 end_vel = pair.getPartner(this).transform.forward * startVel.magnitude;
+                //velocity is in world
+                Vector3 relativePortalForce = transform.InverseTransformDirection(startVel);
+                //velocity is local to portal
+                relativePortalForce = pair.getPartner(this).transform.TransformDirection(relativePortalForce);
+                Debug.Log(relativePortalForce);
+                relativePortalForce = Vector3.Scale(relativePortalForce, new Vector3(-1, 1, -1));
+                //VELOCITY IS CORRECTLY APPLIED TO GLOBAL
+                Vector3 relativePlayerForce = other.transform.InverseTransformDirection(relativePortalForce);
+                Vector3 end_vel = relativePlayerForce;
                 print(end_vel);
                 other.GetComponent<PlayerManager>().SetVelocity(end_vel);
             }    
@@ -78,7 +89,7 @@ public class Portal : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             print("Exited!");
-            if (other.GetComponent<PlayerManager>().teleported != this)
+            if (other.GetComponent<PlayerManager>().teleported != pair.getPartner(this))
             {
                 print("teleported = null!");
                 other.GetComponent<PlayerManager>().teleported = null;

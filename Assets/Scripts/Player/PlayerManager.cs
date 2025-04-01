@@ -121,7 +121,7 @@ public class PlayerManager : MonoBehaviour
     {
         print(vel);
         rb.linearVelocity = Vector3.zero;
-        Debug.Break();
+        //Debug.Break();
         rb.AddForce(vel, ForceMode.Impulse);
 
         //this is only called when teleporting, so temporarily disable air drag

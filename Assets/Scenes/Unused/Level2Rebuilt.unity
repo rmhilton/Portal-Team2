@@ -7062,13 +7062,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307651401}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5000007, y: 0.49999928, z: 0.49999928, w: 0.5000008}
+  m_LocalRotation: {x: -0.49999908, y: -0.5000012, z: -0.500001, w: 0.49999875}
   m_LocalPosition: {x: -27, y: 0.04, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 630}
 --- !u!43 &1335451430
 Mesh:
   m_ObjectHideFlags: 0
@@ -9672,6 +9672,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 129107895180253104, guid: 0cf247299cb7a2548926764cd9cdb684, type: 3}
+      propertyPath: gunIsOn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3007513277953860100, guid: 0cf247299cb7a2548926764cd9cdb684, type: 3}
       propertyPath: m_Name
       value: Player
