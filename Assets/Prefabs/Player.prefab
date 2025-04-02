@@ -114,8 +114,11 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 192
+  breakOnTeleport: 0
   teleported: {fileID: 0}
   vel: {x: 0, y: 0, z: 0}
+  health: 20
+  maxHealth: 20
 --- !u!114 &2733852632570179376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pair: {fileID: 1451512715516058255}
   portalPrefab: {fileID: 3318233253328041139, guid: e05a21c0101923840952e649ef8d72e6, type: 3}
+  gunIsOn: 0
 --- !u!114 &1451512715516058255
 MonoBehaviour:
   m_ObjectHideFlags: 0
