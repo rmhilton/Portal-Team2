@@ -46,6 +46,11 @@ public class PlayerManager : MonoBehaviour
     private int framesToStoreVel = 10;
     private int currentStoredVelFrame = 0;
 
+    //health management
+    public int health;
+    float healthTimer;
+    public int maxHealth;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -72,6 +77,20 @@ public class PlayerManager : MonoBehaviour
             rb.linearDamping = 0;
         }
         vel = rb.linearVelocity;
+
+        //regen health
+        if(health < maxHealth)
+        {
+            healthTimer += Time.deltaTime;
+            if (healthTimer > 5f)
+            {
+                health = maxHealth;
+            }
+        }
+        else
+        {
+            healthTimer = 0;
+        }
     }
 
     private void FixedUpdate()
