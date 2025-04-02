@@ -37,8 +37,10 @@ public class Turret : MonoBehaviour
         if(Vector3.Distance(player.transform.position, transform.position)<gun.shape.length && Vector3.Angle(player.transform.position-transform.position, transform.forward) <= gun.shape.angle)
         {
             RaycastHit hit;
-            if(Physics.Raycast(gun.shape.position, player.transform.position, out hit))
+            if(Physics.Raycast(transform.position, player.transform.position-transform.position, out hit, Mathf.Infinity))
             {
+                Debug.Log(hit.collider.gameObject);
+                Debug.DrawLine(transform.position, hit.point,Color.yellow);
                 if (hit.collider.CompareTag("Player"))
                 {
                         anim.SetBool("Hostile", true);

@@ -9,6 +9,7 @@ TagManager:
   - WeightedButton
   - PortalCamera
   - PortalSurface
+  - Turret
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - PortalSurface
   - PortalBounds
   - HoldArea
-  - 
+  - Turret
   - 
   - 
   - 
