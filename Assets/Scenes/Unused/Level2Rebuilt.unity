@@ -9678,7 +9678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2605716400873927467, guid: 0cf247299cb7a2548926764cd9cdb684, type: 3}
       propertyPath: breakOnTeleport
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3007513277953860100, guid: 0cf247299cb7a2548926764cd9cdb684, type: 3}
       propertyPath: m_Name
